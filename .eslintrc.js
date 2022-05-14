@@ -23,7 +23,7 @@ module.exports = {
     "import/newline-after-import": ["error", { "count": 1 }],
     "import/no-duplicates": "error",
     // "sort-keys": ["error", "asc", {"caseSensitive": true, "natural": false, "minKeys": 2}],
-    'max-len': ["error", { "code": 120 }],
+    'max-len': ["error", { "code": 150 }],
     'sort-imports': ['error', {
       'ignoreCase': false,
       'ignoreDeclarationSort': true,
