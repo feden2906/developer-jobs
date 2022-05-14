@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ApplicantsModule } from './modules/applicants/applicants.module';
+
+import { ApplicantsModule } from './modules';
 
 @Module({
   imports: [ApplicantsModule],

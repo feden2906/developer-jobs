@@ -7,10 +7,12 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateApplicantDto } from './dto/create-applicant.dto';
-import { UpdateApplicantDto } from './dto/update-applicant.dto';
-import { ApplicantsService } from './applicants.service';
+import { ApiTags } from '@nestjs/swagger';
 
+import { ApplicantsService } from './applicants.service';
+import { CreateApplicantDto, UpdateApplicantDto } from './dto';
+
+@ApiTags('applicants')
 @Controller('applicants')
 export class ApplicantsController {
   constructor(private readonly applicantsService: ApplicantsService) {}

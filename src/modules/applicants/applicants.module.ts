@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { ApplicantsController } from './applicants.controller';
 import { ApplicantsService } from './applicants.service';
 

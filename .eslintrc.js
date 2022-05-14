@@ -4,18 +4,26 @@ module.exports = {
     project: 'tsconfig.json',
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  "env": { "es6": true },
+  plugins: [
+    '@typescript-eslint/eslint-plugin',
+    "simple-import-sort",
+    "import"
+  ],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
   root: true,
-  env: {
-    node: true,
-    jest: true,
-  },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "import/no-duplicates": "error",
+    // "sort-keys": ["error", "asc", {"caseSensitive": true, "natural": false, "minKeys": 2}],
+    'max-len': ["error", { "code": 120 }],
     'sort-imports': ['error', {
       'ignoreCase': false,
       'ignoreDeclarationSort': true,
