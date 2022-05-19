@@ -1,20 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateApplicantDto {
+export class ApplicantResponseDto {
+  @ApiProperty({ example: '123e4567-e89b-12d3-a456-426614174000' })
+  _id: string;
+
   @ApiProperty({ example: 'feden@gmail.com' })
-  @IsEmail()
   email: string;
 
   @ApiProperty({ example: ['nodejs', 'react'] })
-  @IsNotEmpty()
   categories: string[];
 
   @ApiProperty({ example: true })
-  @IsBoolean()
   japaneseKnowledge: boolean;
 
   @ApiProperty({ example: 'middle' })
-  @IsString()
   level: string;
 }

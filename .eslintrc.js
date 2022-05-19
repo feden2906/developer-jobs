@@ -8,7 +8,8 @@ module.exports = {
   plugins: [
     '@typescript-eslint/eslint-plugin',
     "simple-import-sort",
-    "import"
+    "import",
+    'sort-keys-fix'
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -22,6 +23,7 @@ module.exports = {
     "import/first": "error",
     "import/newline-after-import": ["error", { "count": 1 }],
     "import/no-duplicates": "error",
+    "sort-keys-fix/sort-keys-fix": "warn",
     // "sort-keys": ["error", "asc", {"caseSensitive": true, "natural": false, "minKeys": 2}],
     'max-len': ["error", { "code": 150 }],
     'sort-imports': ['error', {

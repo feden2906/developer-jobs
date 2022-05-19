@@ -16,8 +16,8 @@ export class PositionsController {
   constructor(private readonly positionsService: PositionsService) {}
 
   @Post()
-  create(@Body() createPositionDto: CreatePositionDto) {
-    return this.positionsService.create(createPositionDto);
+  create(@Body() dto: CreatePositionDto) {
+    return this.positionsService.create(dto);
   }
 
   @Get()

@@ -24,10 +24,10 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle(`${mode} API documentation`)
     .addBearerAuth({
-      type: 'http',
-      scheme: 'bearer',
       bearerFormat: 'JWT',
       in: 'header',
+      scheme: 'bearer',
+      type: 'http',
     })
     .setVersion('1.0')
     .build();
@@ -38,7 +38,9 @@ async function bootstrap() {
   await app.listen(port, host, () => {
     console.log(`Server is running ${schema}://${host}:${port}`);
     if (mode !== 'PROD') {
-      console.log(`Swagger is running ${schema}://${host}:${port}/${swaggerUrl}`);
+      console.log(
+        `Swagger is running ${schema}://${host}:${port}/${swaggerUrl}`,
+      );
     }
   });
 }

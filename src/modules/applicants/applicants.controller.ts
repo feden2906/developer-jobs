@@ -6,32 +6,43 @@ import {
   Param,
   Patch,
   Post,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 
 import { ApplicantsService } from './applicants.service';
-import { CreateApplicantDto, UpdateApplicantDto } from './dto';
+import {
+  ApplicantResponseDto,
+  CreateApplicantDto,
+  UpdateApplicantDto,
+} from './dto';
 
 @ApiTags('applicants')
 @Controller('applicants')
 export class ApplicantsController {
   constructor(private readonly applicantsService: ApplicantsService) {}
 
+  @UsePipes(new ValidationPipe())
+  @ApiOkResponse({ type: ApplicantResponseDto })
   @Post()
-  create(@Body() createApplicantDto: CreateApplicantDto) {
-    return this.applicantsService.create(createApplicantDto);
+  create(@Body() dto: CreateApplicantDto) {
+    return this.applicantsService.create(dto);
   }
 
+  @ApiOkResponse({ isArray: true, type: ApplicantResponseDto })
   @Get()
   findAll() {
     return this.applicantsService.findAll();
   }
 
+  @ApiOkResponse({ type: ApplicantResponseDto })
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.applicantsService.findOne(+id);
   }
 
+  @ApiOkResponse({ type: ApplicantResponseDto })
   @Patch(':id')
   update(
     @Param('id') id: string,

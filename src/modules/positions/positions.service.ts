@@ -4,7 +4,7 @@ import { CreatePositionDto, UpdatePositionDto } from './dto';
 
 @Injectable()
 export class PositionsService {
-  create(createPositionDto: CreatePositionDto) {
+  create(dto: CreatePositionDto) {
     return 'This action adds a new position';
   }
 
@@ -16,7 +16,7 @@ export class PositionsService {
     return `This action returns a #${id} position`;
   }
 
-  update(id: number, updatePositionDto: UpdatePositionDto) {
+  update(id: number, dto: UpdatePositionDto) {
     return `This action updates a #${id} position`;
   }
 

@@ -1,15 +1,18 @@
 import { Injectable } from '@nestjs/common';
 
+import { ApplicantRepository } from '../../repositories';
 import { CreateApplicantDto, UpdateApplicantDto } from './dto';
 
 @Injectable()
 export class ApplicantsService {
-  create(createApplicantDto: CreateApplicantDto) {
-    return 'This action adds a new applicant';
+  constructor(private readonly applicantRepository: ApplicantRepository) {}
+
+  create(dto: CreateApplicantDto) {
+    return this.applicantRepository.create(dto);
   }
 
   findAll() {
-    return `This action returns all applicants`;
+    return this.applicantRepository.find();
   }
 
   findOne(id: number) {

@@ -5,6 +5,7 @@ import { ApplicantsModule, PositionsModule } from './modules';
 import { EnvConfigService, MongooseConfigService } from './services';
 
 @Module({
+  controllers: [],
   imports: [
     MongooseModule.forRootAsync({
       useClass: MongooseConfigService,
@@ -12,7 +13,6 @@ import { EnvConfigService, MongooseConfigService } from './services';
     ApplicantsModule,
     PositionsModule,
   ],
-  controllers: [],
   providers: [EnvConfigService, MongooseConfigService],
 })
 export class AppModule {}

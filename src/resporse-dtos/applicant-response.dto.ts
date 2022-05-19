@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class ApplicantResponseDto {
-  @ApiProperty({ required: true, example: 'feden@gmail.com' })
+  @ApiProperty({ example: 'feden@gmail.com', required: true })
   email: string;
 
-  @ApiProperty({ required: true, example: ['nodejs', 'react'] })
+  @ApiProperty({ example: ['nodejs', 'react'], required: true })
   categories: string[];
 
-  @ApiProperty({ required: true, example: true })
+  @ApiProperty({ example: true, required: true })
   japaneseKnowledge: boolean;
 
-  @ApiProperty({ required: true, example: 'middle' })
+  @ApiProperty({ example: 'middle', required: true })
   level: string;
 }
