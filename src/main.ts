@@ -1,6 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SentryService } from '@ntegral/nestjs-sentry';
 
 import { AppModule } from './app.module';
 import { EnvConfigService } from './services';
@@ -15,6 +16,8 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  app.useLogger(SentryService.SentryServiceInstance());
 
   app.enableCors({
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],

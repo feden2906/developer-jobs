@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { InjectSentry, SentryService } from '@ntegral/nestjs-sentry';
 
 import { ApplicantRepository } from '../../repositories';
 import { CreateApplicantDto, UpdateApplicantDto } from './dto';
 
 @Injectable()
 export class ApplicantsService {
-  constructor(private readonly applicantRepository: ApplicantRepository) {}
+  constructor(
+    @InjectSentry()
+    private readonly sentry: SentryService,
+    private readonly applicantRepository: ApplicantRepository,
+  ) {}
 
   create(dto: CreateApplicantDto) {
     return this.applicantRepository.create(dto);
   }
 
   findAll() {
+    this.sentry.log('sms was sent');
+    this.sentry.error('sms was sent');
     return this.applicantRepository.find();
   }
 
