@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
@@ -7,6 +8,13 @@ import { EnvConfigService } from './services';
 async function bootstrap() {
   const config = new EnvConfigService();
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      forbidNonWhitelisted: true,
+      whitelist: true,
+    }),
+  );
 
   app.enableCors({
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],
@@ -44,4 +52,5 @@ async function bootstrap() {
     }
   });
 }
+
 bootstrap();
