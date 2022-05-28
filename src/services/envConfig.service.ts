@@ -4,7 +4,7 @@ import * as fs from 'fs';
 
 @Injectable()
 export class EnvConfigService {
-  private readonly env: string = '';
+  private readonly env: string = 'local';
   private readonly config: { key: string };
 
   constructor() {
