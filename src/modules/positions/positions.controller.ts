@@ -10,14 +10,23 @@ import {
 
 import { CreatePositionDto, UpdatePositionDto } from './dto';
 import { PositionsService } from './positions.service';
+import { InjectSentry, SentryService } from '@ntegral/nestjs-sentry';
 
 @Controller('positions')
 export class PositionsController {
-  constructor(private readonly positionsService: PositionsService) {}
+  constructor(
+    @InjectSentry()
+    private readonly sentry: SentryService,
+    private readonly positionsService: PositionsService,
+  ) {}
 
   @Post()
   create(@Body() dto: CreatePositionDto) {
-    return this.positionsService.create(dto);
+    try {
+      return this.positionsService.create(dto);
+    } catch (e) {
+      // this.sentry.error(e);
+    }
   }
 
   @Get()

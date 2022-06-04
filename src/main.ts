@@ -17,7 +17,7 @@ async function bootstrap() {
     }),
   );
 
-  app.useLogger(SentryService.SentryServiceInstance());
+  // app.useLogger(SentryService.SentryServiceInstance());
 
   app.enableCors({
     allowedHeaders: ['Content-Type', 'Accept', 'Authorization'],

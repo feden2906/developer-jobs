@@ -12,6 +12,7 @@ export class ApplicantRepository {
   ) {}
 
   public async create(dto) {
+    console.log(dto);
     return this.applicantModel.create(dto);
   }
 
